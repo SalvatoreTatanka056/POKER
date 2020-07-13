@@ -29,7 +29,8 @@ namespace WindowsFormsApplication8
         public int iFase;
 
         CartaStruct[] CarteScelte = null;
-
+        List<CartaStruct> cartaStructs = new List<CartaStruct>();
+     
         int[] iNumeriSingoli = new int[6];
 
         [DllImport("Kernel32.dll")]
@@ -91,6 +92,8 @@ namespace WindowsFormsApplication8
 
             if (iFase == 1)
             {
+                cartaStructs.Clear();
+    
                 for (int i = 0; i < 5; i++)
                 {
 
@@ -105,17 +108,28 @@ namespace WindowsFormsApplication8
             {
                 if (iFase == 2)
                 {
+
                     if (arrayscelta[i] == 0)
                     {
                         Random _rd = new Random();
                         iCarta = _rd.Next(1, 13);
                         iColoreCarta = _rd.Next(1, 5);
 
+
                         CarteScelte[i].Colore = iColoreCarta;
                         CarteScelte[i].Numero = iCarta;
-                        
+                        CarteScelte[i].iCartaScelta = 0;
+
+                        if (!cartaStructs.Contains(CarteScelte[i]))
+                        {
+                            cartaStructs[i] = CarteScelte[i];
+
+                        }
+                        else
+                        {
+                            i--;
+                        }
                     }
-                    CarteScelte[i].iCartaScelta = 0;
 
                 }
                 else
@@ -127,7 +141,20 @@ namespace WindowsFormsApplication8
                     CarteScelte[i].Colore = iColoreCarta;
                     CarteScelte[i].Numero = iCarta;
                     CarteScelte[i].iCartaScelta = 0;
+
+                    if (!cartaStructs.Contains(CarteScelte[i]))
+                    {
+                        cartaStructs.Add(CarteScelte[i]);
+                    }
+                    else
+                    {
+                        i--;
+
+                    }
                 }
+
+
+
 
                 Thread.Sleep(100);
             }
@@ -135,7 +162,7 @@ namespace WindowsFormsApplication8
 
             Thread.Sleep(500);
 
-            DisegnaCarteScelte(CarteScelte);
+            DisegnaCarteScelte();
 
             if (iFase == 1)
             {
@@ -166,29 +193,29 @@ namespace WindowsFormsApplication8
 
         }
 
-        private void DisegnaCarteScelte(CartaStruct[] carteScelte)
+        private void DisegnaCarteScelte()
         {
 
             string sCostruita = string.Empty;
 
             for (int i = 0; i < 5; i++)
             {
-                switch (carteScelte[i].Colore)
+                switch (cartaStructs[i].Colore)
                 {
                     case 0:
-                        sCostruita += " " + carteScelte[i].Numero.ToString();
+                        sCostruita += " " + cartaStructs[i].Numero.ToString();
                         break;
                     case 1:
-                        sCostruita += " " + carteScelte[i].Numero.ToString();
+                        sCostruita += " " + cartaStructs[i].Numero.ToString();
                         break;
                     case 2:
-                        sCostruita += " " + carteScelte[i].Numero.ToString();
+                        sCostruita += " " + cartaStructs[i].Numero.ToString();
                         break;
                     case 3:
-                        sCostruita += " " + carteScelte[i].Numero.ToString();
+                        sCostruita += " " + cartaStructs[i].Numero.ToString();
                         break;
                     case 4:
-                        sCostruita += " " + carteScelte[i].Numero.ToString();
+                        sCostruita += " " + cartaStructs[i].Numero.ToString();
                         break;
 
                 }
@@ -197,11 +224,14 @@ namespace WindowsFormsApplication8
              txtCarte.Text = sCostruita;
 
 
-            DisegnaCerchio(carteScelte);
+            DisegnaCerchio();
+
+
+            
            
         }
 
-        private void DisegnaCerchio(CartaStruct[] carteScelte)
+        private void DisegnaCerchio()
         {
 
             System.Drawing.Graphics graphics = this.CreateGraphics();
@@ -222,7 +252,7 @@ namespace WindowsFormsApplication8
                 graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
                 System.Drawing.SolidBrush _myBrush = null;
-                switch (carteScelte[i].Colore)
+                switch (cartaStructs[i].Colore)
                 {
                     case 0:
                         _myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
@@ -252,7 +282,7 @@ namespace WindowsFormsApplication8
                 _myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
                 graphics.FillEllipse(_myBrush, _rectangle);
 
-                String drawString = carteScelte[i].Numero.ToString();
+                String drawString = cartaStructs[i].Numero.ToString();
                 Font drawFont = new Font("Arial", 28);
                 SolidBrush drawBrush = new SolidBrush(Color.Black);
                 PointF drawPoint = new PointF(100.0F * (i + 1)+(y/2), 100.0F );
@@ -269,7 +299,7 @@ namespace WindowsFormsApplication8
                 z += 50;
             }
 
-            VericaVincita(carteScelte);
+            VericaVincita();
         }
 
         private bool IsContainer(int numero)
@@ -290,7 +320,7 @@ namespace WindowsFormsApplication8
             return bfind;
         }
 
-        private void VericaVincita(CartaStruct[] carteScelte)
+        private void VericaVincita()
         {
             bool CartaVincente=false;
             int iUndici, iDodici, iTredici,CartaGenerale;
@@ -310,7 +340,7 @@ namespace WindowsFormsApplication8
 
             for (int i = 0; i < 5; i++)
             {
-                switch(carteScelte[i].Numero)
+                switch(cartaStructs[i].Numero)
                 {
                     case 1:
                         iPrimo++;
@@ -353,14 +383,14 @@ namespace WindowsFormsApplication8
 
             int z = 0;
 
-            iNumeriSingoli[z] = carteScelte[z].Numero;
+            iNumeriSingoli[z] = cartaStructs[z].Numero;
 
             for (int izy = 0; izy < 5; izy++)
             {
-                if (!IsContainer(carteScelte[izy].Numero))
+                if (!IsContainer(cartaStructs[izy].Numero))
                 {
                     z++;
-                    iNumeriSingoli[z] = carteScelte[izy].Numero;
+                    iNumeriSingoli[z] = cartaStructs[izy].Numero;
                 }
             }
 
@@ -370,15 +400,15 @@ namespace WindowsFormsApplication8
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    if (iNumeriSingoli[z] == carteScelte[j].Numero)
-                        carteScelte[z].iCartaScelta++;
+                    if (iNumeriSingoli[z] == cartaStructs[j].Numero) ;
+                       // cartaStructs[z].iCartaScelta++;
                 }
                 z++;
             }
 
             for (int j = 0; j < 5; j++)
             {
-                if(carteScelte[j].iCartaScelta == 2)
+                if(cartaStructs[j].iCartaScelta == 2)
                 {
                     ContaCarte++;
                     if (ContaCarte == 2)
@@ -388,7 +418,7 @@ namespace WindowsFormsApplication8
                    
                 }
 
-                if (carteScelte[j].iCartaScelta == 3)
+                if (cartaStructs[j].iCartaScelta == 3)
                 {
                     ContaCarte++;
                     if (ContaCarte == 1)
@@ -402,13 +432,13 @@ namespace WindowsFormsApplication8
                     }
                 }
 
-                if (carteScelte[j].iCartaScelta == 4)
+                if (cartaStructs[j].iCartaScelta == 4)
                 {
                     ContaCarte++;
                     iTotale = 400;
                 }
 
-                if (carteScelte[j].iCartaScelta == 5)
+                if (cartaStructs[j].iCartaScelta == 5)
                 {
                     ContaCarte++;
                     iTotale = 11000;
