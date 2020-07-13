@@ -27,7 +27,9 @@ namespace WindowsFormsApplication8
         public int iFase;
         CartaStruct[] CarteScelte = null;
         List<CartaStruct> cartaStructs = new List<CartaStruct>();
-     
+        List<CartaStruct> cartaStructsTmp = new List<CartaStruct>();
+
+
         int[] iNumeriSingoli = new int[6];
 
         [DllImport("Kernel32.dll")]
@@ -98,12 +100,18 @@ namespace WindowsFormsApplication8
                             _cartaSTmp.Colore = CarteScelte[i].Colore;
                             _cartaSTmp.Numero = CarteScelte[i].Numero;
                             _cartaSTmp.iCartaScelta = CarteScelte[i].iCartaScelta;
-
                             cartaStructs[i] = _cartaSTmp;
 
                         }
                         else
                         {
+
+                            CartaStruct _cartaSTmp;
+                            _cartaSTmp.Colore = CarteScelte[i].Colore;
+                            _cartaSTmp.Numero = CarteScelte[i].Numero;
+                            _cartaSTmp.iCartaScelta = CarteScelte[i].iCartaScelta;
+                            cartaStructs[i] = _cartaSTmp;
+
                             i--;
                         }
                     }
@@ -125,8 +133,8 @@ namespace WindowsFormsApplication8
                     }
                     else
                     {
-                     
-                     i--;
+                 
+                        i--;
 
                     }
                 }
@@ -375,29 +383,37 @@ namespace WindowsFormsApplication8
 
 
             z = 0;
+
+
+            cartaStructsTmp.Clear();
+
+
             for (; iNumeriSingoli[z] != 0;)
             {
+                CartaStruct temp;
+                temp.Colore = 0;
+                temp.Numero = 0;
+                temp.iCartaScelta = 0;
+
                 for (int j = 0; j < 5; j++)
                 {
+
                     if (iNumeriSingoli[z] == cartaStructs[j].Numero)
                     {
-
-                        CartaStruct temp;
-
-                        temp.Colore = cartaStructs[z].Colore;
-                        temp.Numero = cartaStructs[z].Numero;
-                        temp.iCartaScelta = cartaStructs[z].iCartaScelta;
                         temp.iCartaScelta++;
-                        cartaStructs[z] = temp;
-
+                        
                     }
+                }
+                if (temp.iCartaScelta > 0)
+                {
+                    cartaStructsTmp.Add(temp);
                 }
                 z++;
             }
 
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < cartaStructsTmp.Count ; j++)
             {
-                if(cartaStructs[j].iCartaScelta == 2)
+                if(cartaStructsTmp[j].iCartaScelta == 2)
                 {
                     ContaCarte++;
                     if (ContaCarte == 2)
@@ -407,7 +423,7 @@ namespace WindowsFormsApplication8
                    
                 }
 
-                if (cartaStructs[j].iCartaScelta == 3)
+                if (cartaStructsTmp[j].iCartaScelta == 3)
                 {
                     ContaCarte++;
                     if (ContaCarte == 1)
@@ -421,13 +437,13 @@ namespace WindowsFormsApplication8
                     }
                 }
 
-                if (cartaStructs[j].iCartaScelta == 4)
+                if (cartaStructsTmp[j].iCartaScelta == 4)
                 {
                     ContaCarte++;
                     iTotale = 400;
                 }
 
-                if (cartaStructs[j].iCartaScelta == 5)
+                if (cartaStructsTmp[j].iCartaScelta == 5)
                 {
                     ContaCarte++;
                     iTotale = 11000;
