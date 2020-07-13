@@ -129,11 +129,11 @@ namespace WindowsFormsApplication8
                     CarteScelte[i].iCartaScelta = 0;
                 }
 
-                Thread.Sleep(200);
+                Thread.Sleep(100);
             }
 
 
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
 
             DisegnaCarteScelte(CarteScelte);
 
@@ -149,11 +149,17 @@ namespace WindowsFormsApplication8
                     arrayscelta[i] = 0;
                 }
 
-                button3.FlatStyle = FlatStyle.Standard;
-                button4.FlatStyle = FlatStyle.Standard;
-                button2.FlatStyle = FlatStyle.Standard;
-                button5.FlatStyle = FlatStyle.Standard;
-                btn1.FlatStyle = FlatStyle.Standard;
+                button3.FlatStyle = FlatStyle.Popup;
+                button4.FlatStyle = FlatStyle.Popup;
+                button2.FlatStyle = FlatStyle.Popup;
+                button5.FlatStyle = FlatStyle.Popup;
+                btn1.FlatStyle = FlatStyle.Popup;
+
+                button3.BackColor = Color.White;
+                button4.BackColor = Color.White; 
+                button2.BackColor = Color.White;
+                button5.BackColor = Color.White;
+                btn1.BackColor = Color.White;
 
                 button1.Enabled = true;
             }
@@ -426,6 +432,7 @@ namespace WindowsFormsApplication8
                 //button5.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Pulsante));
                 //button5.Invalidate();
                 button3.FlatStyle = FlatStyle.Standard;
+                button3.BackColor = Color.White;
             }
             else
             {
@@ -433,6 +440,7 @@ namespace WindowsFormsApplication8
                 //button5.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.PulsanteScelta));
                 //button5.Invalidate();
                 button3.FlatStyle = FlatStyle.Flat;
+                button3.BackColor = Color.Red;
             }
             button1.Enabled = true;
             
@@ -461,8 +469,7 @@ namespace WindowsFormsApplication8
                 txtPunti.Text = i.ToString();
                 txtCredito.Text = (Convert.ToInt64(txtCredito.Text)+1).ToString();
                 txtPunti.Invalidate();
-                Thread.Sleep(10);
-                Beep(940, 100);
+                Beep(940, 10);
                 Application.DoEvents();
                  
             }
@@ -478,11 +485,13 @@ namespace WindowsFormsApplication8
 
                 arrayscelta[2] = 0;
                 button4.FlatStyle = FlatStyle.Standard;
+                button4.BackColor = Color.White;
             }
             else
             {
                 arrayscelta[2] = 1;
                 button4.FlatStyle = FlatStyle.Flat;
+                button4.BackColor = Color.Red;
             }
             button1.Enabled = true;
 
@@ -495,12 +504,15 @@ namespace WindowsFormsApplication8
             {
                 arrayscelta[0] = 0;
                 btn1.FlatStyle = FlatStyle.Standard;
+                btn1.BackColor = Color.White;
                 //btn1.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Pulsante));
             }
             else
             {
                 arrayscelta[0] = 1;
                 btn1.FlatStyle = FlatStyle.Flat;
+
+                btn1.BackColor = Color.Red;
                 //btn1.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.PulsanteScelta));
             }
 
@@ -519,6 +531,7 @@ namespace WindowsFormsApplication8
                 //button2.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Pulsante));
                 //button2.Invalidate();
                 button2.FlatStyle = FlatStyle.Standard;
+                button2.BackColor = Color.White;
 
             }
             else
@@ -526,7 +539,9 @@ namespace WindowsFormsApplication8
                 arrayscelta[1] = 1;
                 //button2.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.PulsanteScelta));
                 //button2.Invalidate();
+               
                 button2.FlatStyle = FlatStyle.Flat;
+                button2.BackColor = Color.Red;
             }
 
             button1.Enabled = true;
@@ -540,6 +555,7 @@ namespace WindowsFormsApplication8
                 //button5.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Pulsante));
                 //button5.Invalidate();
                 button5.FlatStyle = FlatStyle.Standard;
+                button5.BackColor = Color.White;
             }
             else
             {
@@ -547,6 +563,7 @@ namespace WindowsFormsApplication8
                 //button5.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.PulsanteScelta));
                 //button5.Invalidate();
                 button5.FlatStyle = FlatStyle.Flat;
+                button5.BackColor = Color.Red;
             }
             button1.Enabled = true;
         }

@@ -76,9 +76,7 @@
             // 
             // button5
             // 
-            this.button5.BackgroundImage = global::WindowsFormsApplication8.Properties.Resources.Pulsante;
-            this.button5.Image = global::WindowsFormsApplication8.Properties.Resources.Pulsante;
-            this.button5.Location = new System.Drawing.Point(520, 236);
+            this.button5.Location = new System.Drawing.Point(532, 236);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(132, 49);
             this.button5.TabIndex = 6;
@@ -87,8 +85,7 @@
             // 
             // button4
             // 
-            this.button4.Image = global::WindowsFormsApplication8.Properties.Resources.Pulsante;
-            this.button4.Location = new System.Drawing.Point(368, 236);
+            this.button4.Location = new System.Drawing.Point(366, 236);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(135, 49);
             this.button4.TabIndex = 5;
@@ -97,8 +94,7 @@
             // 
             // button3
             // 
-            this.button3.Image = global::WindowsFormsApplication8.Properties.Resources.Pulsante;
-            this.button3.Location = new System.Drawing.Point(668, 236);
+            this.button3.Location = new System.Drawing.Point(689, 236);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(140, 49);
             this.button3.TabIndex = 4;
@@ -107,8 +103,7 @@
             // 
             // button2
             // 
-            this.button2.Image = global::WindowsFormsApplication8.Properties.Resources.Pulsante;
-            this.button2.Location = new System.Drawing.Point(216, 236);
+            this.button2.Location = new System.Drawing.Point(197, 236);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(146, 49);
             this.button2.TabIndex = 3;
@@ -117,8 +112,7 @@
             // 
             // btn1
             // 
-            this.btn1.Image = global::WindowsFormsApplication8.Properties.Resources.Pulsante;
-            this.btn1.Location = new System.Drawing.Point(65, 236);
+            this.btn1.Location = new System.Drawing.Point(38, 236);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(135, 49);
             this.btn1.TabIndex = 2;
