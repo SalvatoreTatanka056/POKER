@@ -29,7 +29,6 @@ namespace WindowsFormsApplication8
         List<CartaStruct> cartaStructs = new List<CartaStruct>();
         List<CartaStruct> cartaStructsTmp = new List<CartaStruct>();
 
-
         int[] iNumeriSingoli = new int[6];
 
         [DllImport("Kernel32.dll")]
@@ -49,13 +48,23 @@ namespace WindowsFormsApplication8
         private void button1_Click(object sender, EventArgs e)
         {
 
+            button3.Enabled = true;
+            button4.Enabled = true;
+            button2.Enabled = true;
+            button5.Enabled = true;
+            btn1.Enabled = true;
+
+
             if (Convert.ToInt64(txtCredito.Text) <= 0)
             {
                 txtCredito.Text = "0";
             }
             else
-            {
-                txtCredito.Text = (Convert.ToInt64(txtCredito.Text) - 25).ToString();
+            { 
+                if (iFase == 1)
+                {
+                    txtCredito.Text = (Convert.ToInt64(txtCredito.Text) - 25).ToString();
+                }
             }
 
             Random random = new Random();
@@ -139,23 +148,27 @@ namespace WindowsFormsApplication8
                     }
                 }
 
-
-
-
                 Thread.Sleep(100);
             }
-
-
-            Thread.Sleep(500);
 
             DisegnaCarteScelte();
 
             if (iFase == 1)
             {
+
                 iFase = 2;
-                button1.Enabled = true;
-            }else if (iFase == 2)
+
+            }
+            else if (iFase == 2)
             {
+
+                button1.Enabled = true;
+                button3.Enabled = false;
+                button4.Enabled = false;
+                button2.Enabled = false;
+                button5.Enabled = false;
+                btn1.Enabled = false;
+
                 iFase = 1;
                 for (int i = 0; i < 5; i++)
                 {
@@ -175,6 +188,19 @@ namespace WindowsFormsApplication8
                 btn1.BackColor = Color.White;
 
                 button1.Enabled = true;
+
+                if(iTotale > 0)
+                {
+                    txtPunti.Text = iTotale.ToString();
+                    txtPunti.Invalidate();
+                    txtPunti.Refresh();
+                    Thread.Sleep(2000);
+                    button6_Click(button6, new EventArgs());
+                }
+
+
+
+
             }
 
         }
@@ -274,11 +300,6 @@ namespace WindowsFormsApplication8
                 PointF drawPoint = new PointF(100.0F * (i + 1)+(y/2), 100.0F );
 
                 Thread.Sleep(200);
-
-
-                //Beep(840, 100);
-                //PlaySound("C:\\Windows\\Media\\recycle.wav", IntPtr.Zero,
-                //        SoundFlags.SND_FILENAME | SoundFlags.SND_SYNC );
 
                 graphics.DrawString(drawString, drawFont, drawBrush, drawPoint);
                 y += 100;
@@ -384,7 +405,6 @@ namespace WindowsFormsApplication8
 
             z = 0;
 
-
             cartaStructsTmp.Clear();
 
 
@@ -408,6 +428,7 @@ namespace WindowsFormsApplication8
                 {
                     cartaStructsTmp.Add(temp);
                 }
+
                 z++;
             }
 
@@ -416,22 +437,18 @@ namespace WindowsFormsApplication8
                 if(cartaStructsTmp[j].iCartaScelta == 2)
                 {
                     ContaCarte++;
+
                     if (ContaCarte == 2)
                     {
                         iTotale = 20;
                     }
-                   
                 }
 
                 if (cartaStructsTmp[j].iCartaScelta == 3)
                 {
-                    ContaCarte++;
+                    iTotale = 30;
+                 
                     if (ContaCarte == 1)
-                    {
-                        iTotale = 30;
-                    }
-
-                    if (ContaCarte == 2)
                     {
                         iTotale = 100;
                     }
@@ -439,23 +456,27 @@ namespace WindowsFormsApplication8
 
                 if (cartaStructsTmp[j].iCartaScelta == 4)
                 {
-                    ContaCarte++;
                     iTotale = 400;
                 }
 
                 if (cartaStructsTmp[j].iCartaScelta == 5)
                 {
-                    ContaCarte++;
                     iTotale = 11000;
                 }
             }
 
             if (iTotale > 0)
             {
-                Beep(440, 1000);
-                txtDoppiaCoppia.BackColor = Color.Red;
+                Beep(432, 700);
                 txtPunti.Text = iTotale.ToString();
+                txtPunti.Invalidate();
 
+            }
+            else
+            {
+                Beep(200, 700);
+                txtPunti.Text = "0";
+                txtPunti.Invalidate();
             }
         }
 
@@ -464,16 +485,12 @@ namespace WindowsFormsApplication8
             if (arrayscelta[4] == 1)
             {
                 arrayscelta[4] = 0;
-                //button5.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Pulsante));
-                //button5.Invalidate();
                 button3.FlatStyle = FlatStyle.Standard;
                 button3.BackColor = Color.White;
             }
             else
             {
                 arrayscelta[4] = 1;
-                //button5.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.PulsanteScelta));
-                //button5.Invalidate();
                 button3.FlatStyle = FlatStyle.Flat;
                 button3.BackColor = Color.Red;
             }
@@ -499,14 +516,14 @@ namespace WindowsFormsApplication8
         private void button6_Click(object sender, EventArgs e)
         {
 
-            for (int i = 25; i >= 0; i--)
+            for (int i = iTotale; i >= 0; i--)
             {
                 txtPunti.Text = i.ToString();
                 txtCredito.Text = (Convert.ToInt64(txtCredito.Text)+1).ToString();
                 txtPunti.Invalidate();
-                Beep(940, 10);
+                Thread.Sleep(50);
                 Application.DoEvents();
-                 
+
             }
 
             txtCredito.Text = (Convert.ToInt64(txtCredito.Text) - 1).ToString();
@@ -540,19 +557,13 @@ namespace WindowsFormsApplication8
                 arrayscelta[0] = 0;
                 btn1.FlatStyle = FlatStyle.Standard;
                 btn1.BackColor = Color.White;
-                //btn1.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Pulsante));
             }
             else
             {
                 arrayscelta[0] = 1;
                 btn1.FlatStyle = FlatStyle.Flat;
-
                 btn1.BackColor = Color.Red;
-                //btn1.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.PulsanteScelta));
             }
-
-
-            
 
             button1.Enabled = true;
         }
@@ -563,8 +574,6 @@ namespace WindowsFormsApplication8
             if (arrayscelta[1] == 1)
             {
                 arrayscelta[1] = 0;
-                //button2.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Pulsante));
-                //button2.Invalidate();
                 button2.FlatStyle = FlatStyle.Standard;
                 button2.BackColor = Color.White;
 
@@ -572,9 +581,6 @@ namespace WindowsFormsApplication8
             else
             {
                 arrayscelta[1] = 1;
-                //button2.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.PulsanteScelta));
-                //button2.Invalidate();
-               
                 button2.FlatStyle = FlatStyle.Flat;
                 button2.BackColor = Color.Red;
             }
@@ -587,16 +593,12 @@ namespace WindowsFormsApplication8
             if (arrayscelta[3] == 1)
             {
                 arrayscelta[3] = 0;
-                //button5.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Pulsante));
-                //button5.Invalidate();
                 button5.FlatStyle = FlatStyle.Standard;
                 button5.BackColor = Color.White;
             }
             else
             {
                 arrayscelta[3] = 1;
-                //button5.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.PulsanteScelta));
-                //button5.Invalidate();
                 button5.FlatStyle = FlatStyle.Flat;
                 button5.BackColor = Color.Red;
             }

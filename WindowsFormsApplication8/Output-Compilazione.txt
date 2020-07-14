@@ -1,8 +1,8 @@
 ﻿1>------ Inizio compilazione: Progetto: WindowsFormsApplication8, Configurazione: Debug Any CPU ------
-1>C:\Users\Tatanka056\documents\visual studio 2015\Projects\WindowsFormsApplication8\WindowsFormsApplication8\Form1.cs(260,18,260,31): warning CS0219: La variabile 'CartaVincente' è assegnata, ma il suo valore non viene mai usato
-1>C:\Users\Tatanka056\documents\visual studio 2015\Projects\WindowsFormsApplication8\WindowsFormsApplication8\Form1.cs(261,44,261,57): warning CS0168: La variabile 'CartaGenerale' è dichiarata, ma non viene mai usata
-1>C:\Users\Tatanka056\documents\visual studio 2015\Projects\WindowsFormsApplication8\WindowsFormsApplication8\Form1.cs(262,53,262,60): warning CS0219: La variabile 'iQuinto' è assegnata, ma il suo valore non viene mai usato
-1>C:\Users\Tatanka056\documents\visual studio 2015\Projects\WindowsFormsApplication8\WindowsFormsApplication8\Form1.cs(267,17,267,30): warning CS0219: La variabile 'iNumeroCarta1' è assegnata, ma il suo valore non viene mai usato
-1>C:\Users\Tatanka056\documents\visual studio 2015\Projects\WindowsFormsApplication8\WindowsFormsApplication8\Form1.cs(268,17,268,30): warning CS0219: La variabile 'iNumeroCarta2' è assegnata, ma il suo valore non viene mai usato
-1>  WindowsFormsApplication8 -> C:\Users\Tatanka056\documents\visual studio 2015\Projects\WindowsFormsApplication8\WindowsFormsApplication8\bin\Debug\WindowsFormsApplication8.exe
+1>C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\Form1.cs(334,18,334,31): warning CS0219: La variabile 'CartaVincente' è assegnata, ma il suo valore non viene mai usato
+1>C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\Form1.cs(336,44,336,57): warning CS0168: La variabile 'CartaGenerale' è dichiarata, ma non viene mai usata
+1>C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\Form1.cs(337,53,337,60): warning CS0219: La variabile 'iQuinto' è assegnata, ma il suo valore non viene mai usato
+1>C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\Form1.cs(348,17,348,30): warning CS0219: La variabile 'iNumeroCarta1' è assegnata, ma il suo valore non viene mai usato
+1>C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\Form1.cs(349,17,349,30): warning CS0219: La variabile 'iNumeroCarta2' è assegnata, ma il suo valore non viene mai usato
+1>  WindowsFormsApplication8 -> C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\bin\Debug\WindowsFormsApplication8.exe
 ========== Compilazione: 1 completate, 0 non riuscite, 0 aggiornate, 0 ignorate ==========
