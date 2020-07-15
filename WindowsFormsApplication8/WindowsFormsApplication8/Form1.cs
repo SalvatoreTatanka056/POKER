@@ -54,6 +54,8 @@ namespace WindowsFormsApplication8
             button5.Enabled = true;
             btn1.Enabled = true;
 
+            button6.Enabled = true;
+
 
             if (Convert.ToInt64(txtCredito.Text) <= 0)
             {
@@ -83,7 +85,6 @@ namespace WindowsFormsApplication8
                     CarteScelte[i].Numero = 0;
                     CarteScelte[i].iCartaScelta = 0;
                 }
-
             }
 
             for (int i = 0; i < 5; i++)
@@ -175,11 +176,6 @@ namespace WindowsFormsApplication8
                     arrayscelta[i] = 0;
                 }
 
-                button3.FlatStyle = FlatStyle.Popup;
-                button4.FlatStyle = FlatStyle.Popup;
-                button2.FlatStyle = FlatStyle.Popup;
-                button5.FlatStyle = FlatStyle.Popup;
-                btn1.FlatStyle = FlatStyle.Popup;
 
                 button3.BackColor = Color.White;
                 button4.BackColor = Color.White; 
@@ -191,15 +187,13 @@ namespace WindowsFormsApplication8
 
                 if(iTotale > 0)
                 {
+                    button6.Enabled = false;
                     txtPunti.Text = iTotale.ToString();
                     txtPunti.Invalidate();
                     txtPunti.Refresh();
                     Thread.Sleep(2000);
-                    button6_Click(button6, new EventArgs());
+                    ritira_vincita();
                 }
-
-
-
 
             }
 
@@ -235,11 +229,7 @@ namespace WindowsFormsApplication8
 
              txtCarte.Text = sCostruita;
 
-
-            DisegnaCerchio();
-
-
-            
+             DisegnaCerchio();
            
         }
 
@@ -503,9 +493,7 @@ namespace WindowsFormsApplication8
             iFase = 1;
 
             CarteScelte = new CartaStruct[5];
-
             arrayscelta = new int[5];
-
 
             for (int i = 0; i < 5; i++)
             {
@@ -515,6 +503,16 @@ namespace WindowsFormsApplication8
 
         private void button6_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < 5; i++)
+            {
+                arrayscelta[i] = 0;
+            }
+
+            button3.BackColor = Color.White;
+            button4.BackColor = Color.White;
+            button2.BackColor = Color.White;
+            button5.BackColor = Color.White;
+            btn1.BackColor = Color.White;
 
             for (int i = iTotale; i >= 0; i--)
             {
@@ -528,6 +526,29 @@ namespace WindowsFormsApplication8
 
             txtCredito.Text = (Convert.ToInt64(txtCredito.Text) - 1).ToString();
             txtDoppiaCoppia.BackColor = Color.Black;
+
+            iTotale = 0;
+
+             iFase = 1;
+        }
+
+
+        private void ritira_vincita()
+        {
+            for (int i = iTotale; i >= 0; i--)
+            {
+                txtPunti.Text = i.ToString();
+                txtCredito.Text = (Convert.ToInt64(txtCredito.Text) + 1).ToString();
+                txtPunti.Invalidate();
+                Thread.Sleep(50);
+                Application.DoEvents();
+
+            }
+
+            txtCredito.Text = (Convert.ToInt64(txtCredito.Text) - 1).ToString();
+            txtDoppiaCoppia.BackColor = Color.Black;
+
+
         }
 
         private void button4_Click(object sender, EventArgs e)
