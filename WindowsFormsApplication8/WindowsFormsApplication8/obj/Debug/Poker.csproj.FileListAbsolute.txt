@@ -1,0 +1,10 @@
+C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\bin\Debug\WindowsFormsApplication8.exe.config
+C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\bin\Debug\WindowsFormsApplication8.exe
+C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\bin\Debug\WindowsFormsApplication8.pdb
+C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\obj\Debug\Poker.csprojAssemblyReference.cache
+C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\obj\Debug\WindowsFormsApplication8.Form1.resources
+C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\obj\Debug\WindowsFormsApplication8.Properties.Resources.resources
+C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\obj\Debug\Poker.csproj.GenerateResource.cache
+C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\obj\Debug\Poker.csproj.CoreCompileInputs.cache
+C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\obj\Debug\WindowsFormsApplication8.exe
+C:\Users\salvatore.romano\OneDrive\Documenti\src\c#\poker\WindowsFormsApplication8\WindowsFormsApplication8\obj\Debug\WindowsFormsApplication8.pdb
