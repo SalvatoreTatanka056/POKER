@@ -56,7 +56,7 @@ namespace WindowsFormsApplication8
 
             button6.Enabled = true;
 
-
+           
             if (Convert.ToInt64(txtCredito.Text) <= 0)
             {
                 txtCredito.Text = "0";
@@ -66,6 +66,8 @@ namespace WindowsFormsApplication8
                 if (iFase == 1)
                 {
                     txtCredito.Text = (Convert.ToInt64(txtCredito.Text) - 25).ToString();
+                   
+
                 }
             }
 
@@ -76,6 +78,8 @@ namespace WindowsFormsApplication8
 
             if (iFase == 1)
             {
+                textBox1.Text = "Avvio";
+
                 cartaStructs.Clear();
     
                 for (int i = 0; i < 5; i++)
@@ -158,6 +162,7 @@ namespace WindowsFormsApplication8
             {
 
                 iFase = 2;
+                textBox1.Text = "Cambio Carte.";
 
             }
             else if (iFase == 2)
@@ -171,6 +176,10 @@ namespace WindowsFormsApplication8
                 btn1.Enabled = false;
 
                 iFase = 1;
+                textBox1.Text = "Avvio.";
+                textBox1.Refresh();
+
+
                 for (int i = 0; i < 5; i++)
                 {
                     arrayscelta[i] = 0;
@@ -491,6 +500,8 @@ namespace WindowsFormsApplication8
         private void Form1_Load(object sender, EventArgs e)
         {
             iFase = 1;
+            textBox1.Text = "Avvio";
+
 
             CarteScelte = new CartaStruct[5];
             arrayscelta = new int[5];
