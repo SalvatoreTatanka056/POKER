@@ -196,12 +196,14 @@ namespace WindowsFormsApplication8
 
                 if(iTotale > 0)
                 {
+                    button1.Enabled = false;
                     button6.Enabled = false;
                     txtPunti.Text = iTotale.ToString();
                     txtPunti.Invalidate();
                     txtPunti.Refresh();
                     Thread.Sleep(2000);
                     ritira_vincita();
+                    button1.Enabled = true;
                 }
 
             }
@@ -540,7 +542,9 @@ namespace WindowsFormsApplication8
 
             iTotale = 0;
 
-             iFase = 1;
+            iFase = 1;
+
+            textBox1.Text = "Avvio";
         }
 
 
@@ -559,6 +563,7 @@ namespace WindowsFormsApplication8
             txtCredito.Text = (Convert.ToInt64(txtCredito.Text) - 1).ToString();
             txtDoppiaCoppia.BackColor = Color.Black;
 
+            textBox1.Text = "Avvio";
 
         }
 
