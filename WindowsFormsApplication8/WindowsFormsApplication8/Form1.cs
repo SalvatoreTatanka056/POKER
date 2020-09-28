@@ -640,6 +640,7 @@ namespace WindowsFormsApplication8
                 button5.BackColor = Color.Red;
             }
             button1.Enabled = true;
+
         }
     }
 }
